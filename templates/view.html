@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Student Profile</h2>
+        <p>Name: {{ student.name }}</p>
+        <p>ID: {{ student.id }}</p>
+        <p>Age: {{ student.age }}</p>
+        <p>Gender: {{ student.gender }}</p>
+        <p>Email: {{ student.email }}</p>
+        <p>College Name: {{ student.college_name }}</p>
+        <p>Degree: {{ student.degree }}</p>
+        <p>Year of Study: {{ student.year_of_study }}</p>
+        <p>Field of Study: {{ student.field_of_study }}</p>
+        <p>Contact Number: {{ student.contact_number }}</p>
+        <p>Date of Birth: {{ student.date_of_birth }}</p>
+        <p>Address: {{ student.address }}</p>
+        <img src="{{ url_for('static', filename='photos/' + student.photo) }}" alt="Student Photo">
+        <a href="{{ url_for('admin') }}"><button>Go back to Admin Panel</button></a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome Student</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome, {{ student.name }}</h2>
+        <img src="{{ url_for('static', filename='photos/' + student.photo) }}" alt="Photo">
+        <p>ID: {{ student.id }}</p>
+        <p>Age: {{ student.age }}</p>
+        <p>Gender: {{ student.gender }}</p>
+        <p>Email: {{ student.email }}</p>
+        <p>College Name: {{ student.college_name }}</p>
+        <p>Degree: {{ student.degree }}</p>
+        <p>Year of Study: {{ student.year_of_study }}</p>
+        <p>Field of Study: {{ student.field_of_study }}</p>
+        <p>Contact Number: {{ student.contact_number }}</p>
+        <p>Date of Birth: {{ student.date_of_birth }}</p>
+        <p>Address: {{ student.address }}</p>
+        <a href="{{ url_for('login') }}"><button>Logout</button></a>
+        <br>
+        <a href="{{ url_for('welcome') }}"><button>Go to Welcome Page</button></a>
+    </div>
+</body>
+</html>

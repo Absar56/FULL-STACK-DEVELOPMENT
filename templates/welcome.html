@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome to Student Management System</h2>
+        <a href="{{ url_for('login') }}"><button class="login-btn">Student Login</button></a>
+        <a href="{{ url_for('admin') }}"><button class="update-btn">Admin Panel</button></a>
+    </div>
+</body>
+</html>
