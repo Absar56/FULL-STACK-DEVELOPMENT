@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Student Login</title>
+  <title>Admin Login</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body class="background">
   <div class="form-container">
-    <h2>Student Login</h2>
+    <h2>Admin Login</h2>
 
     {% with messages = get_flashed_messages() %}
       {% if messages %}
@@ -19,32 +19,29 @@
       {% endif %}
     {% endwith %}
 
-    <form method="POST" action="{{ url_for('student_login') }}">
-      <label for="id">Student ID:</label>
-      <input type="text" name="id" id="id" required>
+    <form method="POST" action="{{ url_for('admin_login') }}">
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="username" required>
 
       <label for="password">Password:</label>
       <div class="password-field">
-        <input type="password" name="password" id="student-password" required>
-        <span class="eye-icon" onclick="toggleStudentPassword()">👁</span>
+        <input type="password" name="password" id="admin-password" required>
+        <span class="eye-icon" onclick="toggleAdminPassword()">👁</span>
       </div>
 
       <button type="submit" class="btn">Login</button>
     </form>
 
     <div class="link-buttons">
-      <a href="{{ url_for('register') }}">Register</a>
-      <a href="{{ url_for('forget') }}">Forgot Password?</a>
-    </div>
+     <a href="{{ url_for('admin_forgot_password') }}">Forgot Password?</a>
 
-    <div class="centered-btn">
-      <a href="{{ url_for('welcome') }}" class="back-btn">Back to Welcome</a>
+      <a href="{{ url_for('welcome') }}">Home</a>
     </div>
   </div>
 
   <script>
-    function toggleStudentPassword() {
-      const pwd = document.getElementById("student-password");
+    function toggleAdminPassword() {
+      const pwd = document.getElementById("admin-password");
       pwd.type = pwd.type === "password" ? "text" : "password";
     }
   </script>

@@ -1,64 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Update Student</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
-  <div class="container">
-    <h2>Update Student</h2>
-    <form method="POST">
-      <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" name="name" value="{{ student.name }}" required>
-      </div>
-      <div class="form-group">
-        <label for="age">Age:</label>
-        <input type="text" name="age" value="{{ student.age }}" required>
-      </div>
-      <div class="form-group">
-        <label for="gender">Gender:</label>
-        <select name="gender" required>
-          <option value="">Select Gender</option>
-          <option value="Male" {% if student.gender == 'Male' %}selected{% endif %}>Male</option>
-          <option value="Female" {% if student.gender == 'Female' %}selected{% endif %}>Female</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" name="email" value="{{ student.email }}" required>
-      </div>
-      <div class="form-group">
-        <label for="college_name">College Name:</label>
-        <input type="text" name="college_name" value="{{ student.college_name }}" required>
-      </div>
-      <div class="form-group">
-        <label for="degree">Degree:</label>
-        <input type="text" name="degree" value="{{ student.degree }}" required>
-      </div>
-      <div class="form-group">
-        <label for="year_of_study">Year of Study:</label>
-        <input type="text" name="year_of_study" value="{{ student.year_of_study }}" required>
-      </div>
-      <div class="form-group">
-        <label for="field_of_study">Field of Study:</label>
-        <input type="text" name="field_of_study" value="{{ student.field_of_study }}" required>
-      </div>
-      <div class="form-group">
-        <label for="contact_number">Contact Number:</label>
-        <input type="text" name="contact_number" value="{{ student.contact_number }}" required>
-      </div>
-      <div class="form-group">
-        <label for="date_of_birth">Date of Birth:</label>
-        <input type="date" name="date_of_birth" value="{{ student.date_of_birth }}" required>
-      </div>
-      <div class="form-group">
-        <label for="address">Address:</label>
-        <textarea name="address" required>{{ student.address }}</textarea>
-      </div>
-      <button type="submit">Update</button>
+<body class="background">
+  <div class="form-container">
+    <h2>Update Student Details</h2>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flash-message">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" enctype="multipart/form-data">
+      <label>ID:</label>
+      <input type="text" name="id" value="{{ student.id }}" readonly>
+
+      <label>Name:</label>
+      <input type="text" name="name" value="{{ student.name }}" required>
+
+      <label>Age:</label>
+      <input type="number" name="age" value="{{ student.age }}" required>
+
+      <label>Gender:</label>
+      <select name="gender" required>
+        <option value="Male" {% if student.gender == 'Male' %}selected{% endif %}>Male</option>
+        <option value="Female" {% if student.gender == 'Female' %}selected{% endif %}>Female</option>
+      </select>
+
+      <label>Email:</label>
+      <input type="email" name="email" value="{{ student.email }}" required>
+
+      <label>Password:</label>
+      <input type="text" name="password" value="{{ student.password }}" required>
+
+      <label>College Name:</label>
+      <input type="text" name="college_name" value="{{ student.college_name }}" required>
+
+      <label>Degree:</label>
+      <input type="text" name="degree" value="{{ student.degree }}" required>
+
+      <label>Year of Study:</label>
+      <input type="text" name="year_of_study" value="{{ student.year_of_study }}" required>
+
+      <label>Field of Study:</label>
+      <input type="text" name="field_of_study" value="{{ student.field_of_study }}" required>
+
+      <label>Contact Number:</label>
+      <input type="text" name="contact_number" value="{{ student.contact_number }}" required>
+
+      <label>Date of Birth:</label>
+      <input type="date" name="date_of_birth" value="{{ student.date_of_birth }}" required>
+
+      <label>Address:</label>
+      <textarea name="address" rows="3" required>{{ student.address }}</textarea>
+
+      <label>Update Photo (optional):</label>
+      <input type="file" name="photo">
+
+      <button type="submit" class="btn">Update</button>
     </form>
-    <a href="{{ url_for('admin') }}"><button>Back to Admin</button></a>
+
+    <div class="link-buttons">
+      <a href="{{ url_for('student_board') }}" class="back-btn">Back to Registered Students</a>
+    </div>
   </div>
 </body>
 </html>
