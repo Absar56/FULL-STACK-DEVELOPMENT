@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="background scroll-background">
+    <div class="welcome-container">
+        <h2>Student Profile</h2>
+
+        <div class="profile-block">
+            <p><strong>ID:</strong> {{ student['id'] }}</p>
+        </div>
+
+        <div class="profile-block">
+            <p><strong>Name:</strong> {{ student['name'] }}</p>
+        </div>
+
+        <div class="profile-block">
+            <p><strong>Age:</strong> {{ student['age'] }}</p>
+        </div>
+
+        <div class="profile-block">
+            <p><strong>Gender:</strong> {{ student['gender'] }}</p>
+        </div>
+
+        <div class="profile-block">
+            <p><strong>Email:</strong> {{ student['email'] }}</p>
+        </div>
+
+        <div class="profile-block">
+            <p><strong>Password:</strong> {{ student['password'] }}</p>
+        </div>
+
+        <div class="profile-block">
+            <p><strong>College Name:</strong> {{ student['college_name'] }}</p>
+        </div>
+
+        <div class="profile-block">
+            <p><strong>Degree:</strong> {{ student['degree'] }}</p>
+        </div>
+
+        <div class="profile-block">
+            <p><strong>Year of Study:</strong> {{ student['year_of_study'] }}</p>
+        </div>
+
+        <div class="profile-block">
+            <p><strong>Field of Study:</strong> {{ student['field_of_study'] }}</p>
+        </div>
+
+        <div class="profile-block">
+            <p><strong>Contact Number:</strong> {{ student['contact_number'] }}</p>
+        </div>
+
+        <div class="profile-block">
+            <p><strong>Date of Birth:</strong> {{ student['date_of_birth'] }}</p>
+        </div>
+
+        <div class="profile-block">
+            <p><strong>Address:</strong> {{ student['address'] }}</p>
+        </div>
+
+        <div class="profile-block">
+            <p><strong>Photo:</strong></p>
+            <img src="{{ url_for('static', filename='uploads/' + student['photo']) }}" alt="Student Photo" class="profile-photo">
+        </div>
+
+        <div class="button-group">
+            <a href="{{ url_for('student_board') }}" class="btn">Back to Registered Students</a>
+        </div>
+    </div>
+</body>
+</html>

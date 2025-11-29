@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="background">
+  <div class="form-container">
+    <h2>Student Login</h2>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flash-message">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="{{ url_for('student_login') }}">
+      <label for="id">Student ID:</label>
+      <input type="text" name="id" id="id" required>
+
+      <label for="password">Password:</label>
+      <div class="password-field">
+        <input type="password" name="password" id="student-password" required>
+        <span class="eye-icon" onclick="toggleStudentPassword()">👁</span>
+      </div>
+
+      <button type="submit" class="btn">Login</button>
+    </form>
+
+    <div class="link-buttons">
+      <a href="{{ url_for('register') }}">Register</a>
+      <a href="{{ url_for('forget') }}">Forgot Password?</a>
+    </div>
+
+    <div class="centered-btn">
+      <a href="{{ url_for('welcome') }}" class="back-btn">Back to Welcome</a>
+    </div>
+  </div>
+
+  <script>
+    function toggleStudentPassword() {
+      const pwd = document.getElementById("student-password");
+      pwd.type = pwd.type === "password" ? "text" : "password";
+    }
+  </script>
+</body>
+</html>

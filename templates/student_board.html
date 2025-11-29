@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel – Student Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    .id-text {
+      color: #1405e0; 
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body class="background scroll-background">
+
+  <div class="form-container">
+    <h2>All Registered Students</h2>
+
+    {% if students %}
+      {% for student in students %}
+        <div class="student-card">
+          <h3 class="id-text">ID: {{ student['id'] }}</h3>
+          <div class="action-buttons">
+            <a href="{{ url_for('view', id=student['id']) }}" class="btn view-btn">View</a>
+            <a href="{{ url_for('update', id=student['id']) }}" class="btn update-btn">Update</a>
+            <a href="{{ url_for('delete', id=student['id']) }}" class="btn delete-btn" onclick="return confirm('Are you sure you want to delete this student?')">Delete</a>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p style="text-align: center; font-weight: bold; color: red;">No students found.</p>
+    {% endif %}
+
+    <div class="centered-btn" style="margin-top: 25px;">
+      <a href="{{ url_for('welcome') }}" class="back-btn">Back to Welcome Page</a>
+    </div>
+  </div>
+
+</body>
+</html>

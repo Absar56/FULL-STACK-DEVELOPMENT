@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Delete Student</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="background">
+  <div class="form-container">
+    <h2>Confirm Delete</h2>
+    <p>Are you sure you want to delete the student <strong>{{ student['name'] }}</strong> (ID: {{ student['id'] }})?</p>
+
+    <form method="POST" action="{{ url_for('delete_student', student_id=student['id']) }}">
+      <div class="action-buttons">
+        <button type="submit" class="btn delete-btn" style="width:48%;">Yes, Delete</button>
+        <a href="{{ url_for('student_board') }}" class="btn" style="width:48%; background-color: #6c757d;">Cancel</a>
+      </div>
+    </form>
+
+    <div class="centered-btn" style="margin-top: 20px;">
+      <a href="{{ url_for('student_board') }}" class="back-btn">Back to Dashboard</a>
+    </div>
+  </div>
+</body>
+</html>
